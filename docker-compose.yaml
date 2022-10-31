@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  postgres-db:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example-password
