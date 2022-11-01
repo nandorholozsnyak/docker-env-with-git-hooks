@@ -400,6 +400,7 @@ One more addition could be introduced, when a local branch is being deleted mayb
 I'm curious about your opinion on the topic, have you tried to do the same? Do you know a better/more professional approach to the problem? If yes please let me know down in the comments.
 
 If you want to follow me you can do it on the following places:
+- [GitHub Repository with the examples](https://github.com/nandorholozsnyak/docker-env-with-git-hooks)
 - [GitHub](https://github.com/nandorholozsnyak)
 - [Twitter](https://twitter.com/TheRealHNK)
 - [LinkedIn](https://www.linkedin.com/in/nandor-holozsnyak/)
