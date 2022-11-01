@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "Post checkout starting"
+
+#
+# Args passed to this are:
+# $1 - Previous HEAD
+# $2 - New HEAD
+# $3 - 1 if checking out a branch, 0 if checking out something else, such as a file (rollbacks)
+#
+if [ '1' == $3 ]
+then
+    if [ ! -f ".git/earlier-branch" ]; then
+        echo "File: .git/earlier-branch does not exist, creating with current branch"
+        echo EARLIER_BRANCH=$(git branch --show-current) > .git/earlier-branch
+    fi
+
+    echo "Loading: .git/earlier-branch"
+    source .git/earlier-branch
+    UPCOMING_BRANCH=$(git branch --show-current)
+
+    echo "Before switch branch: $EARLIER_BRANCH - Upcoming branch: $UPCOMING_BRANCH"
+
+    ./stop-infrastructure.sh $EARLIER_BRANCH
+    ./stop-infrastructure.sh $UPCOMING_BRANCH
+
+    echo EARLIER_BRANCH=$(git branch --show-current) > .git/earlier-branch
+fi
